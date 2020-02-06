@@ -14,10 +14,14 @@ module.exports = {
 
     devServer: {
         hot: true,
-        port: 3000,
+        proxy: { // proxy URLs to backend development server
+            '/api/*': 'http://localhost:3000'
+        },
+        port: 3500,
         watchContentBase: true,
         contentBase: "./public",
-        publicPath: "/assets/"
+        publicPath: "/assets/",
+        historyApiFallback: true
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -25,7 +29,7 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js"]
+        extensions: [".ts", ".tsx", ".js", ".css"]
     },
 
     module: {
@@ -40,8 +44,30 @@ module.exports = {
             {enforce: "pre", test: /\.js$/, loader: "source-map-loader"},
             {
                 test: /\.css$/,
-                use: [{loader: "style-loader"}, {loader: "css-loader"}]
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    }
+                ],
+                include: /\.module\.css$/
             },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    }
+                ],
+                exclude: /\.module\.css$/
+            }
         ]
     },
 
