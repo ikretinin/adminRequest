@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64429cc3-78c9-41ba-9565-501129593585" name="Default Changelist" comment="" />
+    <list default="true" id="64429cc3-78c9-41ba-9565-501129593585" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web/web.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/web/web.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/web/web.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/web/web.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/frontend/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/frontend/Form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/frontend/Request.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/frontend/Request.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/web.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/web.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +25,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1X1jKgZYZOhGYytJgPpUMInxPVx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,6 +35,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.4.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -31,7 +44,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Users\ikretinin\Documents\f-app\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\ikretinin\Documents\adminRequest\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -85,6 +98,8 @@
       <workItem from="1580220437524" duration="17119000" />
       <workItem from="1580712329943" duration="4636000" />
       <workItem from="1580976774679" duration="8647000" />
+      <workItem from="1581321272153" duration="1075000" />
+      <workItem from="1582183793685" duration="7943000" />
     </task>
     <servers />
   </component>
@@ -106,9 +121,17 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1180" y="276" key="FileChooserDialogImpl" timestamp="1581322421859">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1180" y="276" key="FileChooserDialogImpl/1920.0.1536.832/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1581322421859" />
     <state x="-1274" y="236" width="627" height="568" key="find.popup" timestamp="1580989661523">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1274" y="236" width="627" height="568" key="find.popup/1920.0.1536.832/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1580989661523" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1582186976197">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582186976197" />
   </component>
 </project>

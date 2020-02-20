@@ -21,6 +21,22 @@ const styles = require('./style.module.css');
 export class Form extends Component {
     displayName = Form.name;
 
+    localFlags = {
+        surname: 'surname',
+        secondName: 'secondName',
+        email: 'email',
+        selectedDistrict: 'selectedDistrict',
+        selectedCity: 'selectedCity',
+        selectedStreet: 'selectedStreet',
+        house: 'house',
+        building: 'building',
+        flat: 'flat',
+        answerByEmail: 'answerByEmail',
+        answerByPostmail: 'answerByPostmail',
+        agreedWithPDN: 'agreedWithPDN',
+        name: 'name'
+    };
+
     style = {
         card: {
             display: 'flex',
@@ -97,6 +113,7 @@ export class Form extends Component {
 
     componentDidMount(): void {
         this.getDistricts();
+        this.checkLocalStorage();
     }
 
     debounced = (value: any) => {
@@ -117,76 +134,115 @@ export class Form extends Component {
     nameChange = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             name: event.target.value
-        }, () => {this.debounced(this.state.name)});     
+        }, () => {
+            this.debounced(this.state.name);
+            localStorage.setItem(this.localFlags.name, this.state.name);
+        });
     };
     surnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
             surname: event.target.value
-        }, () => {this.debounced(this.state.surname)});     
+        }, () => {
+            this.debounced(this.state.surname);
+            localStorage.setItem(this.localFlags.surname, this.state.surname);
+        });
     };
     secondNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
             secondName: event.target.value
-        }, () => {this.debounced(this.state.secondName)});     
+        }, () => {
+            this.debounced(this.state.secondName);
+            localStorage.setItem(this.localFlags.secondName, this.state.secondName);
+        });
     };
     houseChange = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             house: event.target.value
-        }, () => {this.debounced(this.state.house)});
+        }, () => {
+            this.debounced(this.state.house);
+            localStorage.setItem(this.localFlags.house, String(this.state.house));
+        });
     };
     buildingChange = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             building: event.target.value
-        }, () => {this.debounced(this.state.building)});
+        }, () => {
+            this.debounced(this.state.building);
+            localStorage.setItem(this.localFlags.building, this.state.building);
+        });
     };
     flatChange = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             flat: event.target.value
-        }, () => {this.debounced(this.state.flat)});
+        }, () => {
+            this.debounced(this.state.flat);
+            localStorage.setItem(this.localFlags.flat, String(this.state.flat));
+        });
     };
     cityChange = (event: any) => {
+        if (!event) return;
         this.setState({
             selectedCity: event.target.value
-        }, () => {this.getStreets()});
+        }, () => {
+            this.getStreets();
+            localStorage.setItem(this.localFlags.selectedCity, String(this.state.selectedCity));
+        });
     };
     birthDateChange = (event: any) => {
         this.setState({
             birthDate: event
-        }, () => {this.debounced(this.state.birthDate)});
+        }, () => {
+            this.debounced(this.state.birthDate);
+            localStorage.setItem('birthDate', event);
+        });
     };
     districtChange = (event: any) => {
         this.setState({
             selectedDistrict: event.target.value
         }, () => {
             this.getCities();
+            localStorage.setItem(this.localFlags.selectedDistrict, String(this.state.selectedDistrict));
         });
     };
     streetChange = (event: any) => {
         this.setState({
             selectedStreet: event.target.value
         }, () => {
-            this.debounced(this.state.selectedStreet)
+            this.debounced(this.state.selectedStreet);
+            localStorage.setItem(this.localFlags.selectedStreet, String(this.state.selectedStreet));
         });
     };
     emailChange = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             email: event.target.value
-        }, () => {this.debounced(this.state.email)});
+        }, () => {
+            this.debounced(this.state.email);
+            localStorage.setItem(this.localFlags.email, this.state.email);
+        });
     };
     answerByEmailChange = (event: any) => {
         this.setState({
             answerByEmail: event.target.checked
-        }, () => {this.debounced(this.state.answerByEmail)});
+        }, () => {
+            this.debounced(this.state.answerByEmail);
+            localStorage.setItem(this.localFlags.answerByEmail, String(this.state.answerByEmail));
+        });
     };
     answerByPostmailChange = (event: any) => {
         this.setState({
             answerByPostmail: event.target.checked
-        }, () => {this.debounced(this.state.answerByPostmail)});
+        }, () => {
+            this.debounced(this.state.answerByPostmail);
+            localStorage.setItem(this.localFlags.answerByPostmail, String(this.state.answerByPostmail));
+        });
     };
     agreedWithPDNChange = (event: any) => {
         this.setState({
             agreedWithPDN: !this.state.agreedWithPDN
-        }, () => {this.debounced(this.state.agreedWithPDN)});
+        }, () => {
+            this.debounced(this.state.agreedWithPDN);
+            localStorage.setItem(this.localFlags.agreedWithPDN, String(this.state.agreedWithPDN));
+        });
     };
     getDistricts = () => {
         fetch(`api/district`)
@@ -247,7 +303,7 @@ export class Form extends Component {
                         {/*</MuiPickersUtilsProvider>*/}
                         <FormControl>
                             <InputLabel id="district">Район</InputLabel>
-                            <Select value={this.state.selectedDistrict} onChange={this.districtChange}>
+                            <Select value={this.state.selectedDistrict ? this.state.selectedDistrict : 0} onChange={this.districtChange}>
                                 <MenuItem value={0}>Не выбран</MenuItem>
                                 {!!this.state.districts.length && this.state.districts.map((district: any, k) => {
                                 return (<MenuItem key={k} value={district.id}>{district.name}</MenuItem>)
@@ -256,7 +312,7 @@ export class Form extends Component {
                         </FormControl>
                         <FormControl>
                             <InputLabel id="city">Город</InputLabel>
-                            <Select value={this.state.selectedCity} onChange={this.cityChange}>
+                            <Select value={this.state.selectedCity ? this.state.selectedCity : 0} onChange={this.cityChange}>
                                 <MenuItem value={0}>Не выбран</MenuItem>
                                 {!!this.state.cities.length && this.state.cities.map((city: any, k) => {
                                 return (<MenuItem key={k} value={city.id}>{city.name}</MenuItem>)
@@ -265,7 +321,7 @@ export class Form extends Component {
                         </FormControl>
                         <FormControl>
                             <InputLabel id="street">Улица</InputLabel>
-                            <Select value={this.state.selectedStreet} onChange={this.streetChange}>
+                            <Select value={this.state.selectedStreet ? this.state.selectedStreet : 0} onChange={this.streetChange}>
                                 <MenuItem value={0}>Не выбрана</MenuItem>
                                 {!!this.state.streets.length && this.state.streets.map((street: any, k) => {
                                     return (<MenuItem key={k} value={street.id}>{street.name}</MenuItem>)
@@ -355,5 +411,118 @@ export class Form extends Component {
             </div>
             
         );
+    }
+
+    checkLocalStorage = () => {
+        Object.values(this.localFlags).forEach(flag => {
+            console.log(flag, localStorage.getItem(flag));
+            if (localStorage.getItem(flag)) {
+                let value;
+                switch (flag) {
+                    case this.localFlags.agreedWithPDN:
+                        value = localStorage.getItem(flag) === 'true';
+                        this.setState({
+                            agreedWithPDN: value
+                        });
+                        break;
+                    case this.localFlags.answerByEmail:
+                        value = localStorage.getItem(flag) === 'true';
+                        this.setState({
+                            answerByEmail: value
+                        });
+                        break;
+                    case this.localFlags.answerByPostmail:
+                        value = localStorage.getItem(flag) === 'true';
+                        this.setState({
+                            answerByPostmail: value
+                        });
+                        break;
+                    case this.localFlags.building:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                building: value
+                            });
+                        }
+                        break;
+                    case this.localFlags.selectedCity:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                selectedCity: parseInt(value)
+                            }, () => {
+                                this.getStreets()
+                            });
+                        }
+                        break;
+                    case this.localFlags.selectedDistrict:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                selectedDistrict: parseInt(value)
+                            }, () => {
+                                this.getCities();
+                            });
+                        }
+                        break;
+                    case this.localFlags.email:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                email: value
+                            });
+                        }
+                        break;
+                    case this.localFlags.flat:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                flat: parseInt(value)
+                            });
+                        }
+                        break;
+                    case this.localFlags.house:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                house: parseInt(value)
+                            });
+                        }
+                        break;
+                    case this.localFlags.secondName:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                secondName: value
+                            });
+                        }
+                        break;
+                    case this.localFlags.selectedStreet:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                selectedStreet: parseInt(value)
+                            });
+                        }
+                        break;
+                    case this.localFlags.surname:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                surname: value
+                            });
+                        }
+                        break;
+                    case this.localFlags.name:
+                        value = localStorage.getItem(flag);
+                        if (value) {
+                            this.setState({
+                                name: value
+                            });
+                        }
+                        break;
+                }
+            }
+        });
     }
 }

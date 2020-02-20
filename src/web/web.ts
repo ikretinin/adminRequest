@@ -6,6 +6,10 @@ import cors from "cors";
 import {pool} from "../config";
 
 // Express app initialization
+const tls = require('tls');
+const fs = require('fs');
+
+
 const app = express();
 
 // Template configuration

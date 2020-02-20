@@ -1,7 +1,7 @@
 {
   "main": "index.js",
-  "name": "f-app",
-  "version": "0.0.0",
+  "name": "admin-request",
+  "version": "0.0.5",
   "private": true,
   "scripts": {
     "build": "tsc && concurrently \"webpack\" \"node dist/server.js\"",

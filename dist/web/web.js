@@ -17,6 +17,8 @@ const bodyParser = __importStar(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const config_1 = require("../config");
 // Express app initialization
+const tls = require('tls');
+const fs = require('fs');
 const app = express_1.default();
 // Template configuration
 app.engine("html", require("ejs").renderFile);

@@ -1,6 +1,9 @@
 import {Card, CardContent, FormControl, Input, InputLabel, TextField} from "@material-ui/core";
 import React, {ChangeEvent, Component, CSSProperties} from "react";
 import _ from "lodash";
+import {Link} from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 export class Request extends Component {
     displayName = Request.name;
@@ -35,7 +38,23 @@ export class Request extends Component {
         } as CSSProperties,
         input: {
             height: '100%'
-        } as CSSProperties
+        } as CSSProperties,
+        buttons: {
+            display: 'flex',
+            flexDirection: 'row',
+            maxWidth: '640px',
+            width: '100%',
+            justifyContent: 'space-between'
+        } as CSSProperties,
+        block: {
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            alignItems: 'center'
+        } as CSSProperties,
+        button: {
+            width: '100%'
+        }
     };
 
     constructor(props: any) {
@@ -52,8 +71,9 @@ export class Request extends Component {
     render() {
         return(
             <div style={this.styles.card}>
-                <Card style={this.styles.form}>
-                    <CardContent style={this.styles.cardContent}>
+                <div style={this.styles.block}>
+                    <Card style={this.styles.form}>
+                        <CardContent style={this.styles.cardContent}>
                             <TextField style={this.styles.input}
                                        multiline={true}
                                        rows={17}
@@ -62,8 +82,17 @@ export class Request extends Component {
                                        value={this.state.request}
                                        onChange={this.requestChange}
                             />
-                    </CardContent>
-                </Card>
+                        </CardContent>
+                    </Card>
+                    <div style={this.styles.buttons}>
+                        <Button component={Link} to="/form" style={this.styles.button}>
+                            <NavigateBeforeIcon /> Вернуться к форме
+                        </Button>
+                        <Button style={this.styles.button}>
+                            Отправить
+                        </Button>
+                    </div>
+                </div>
             </div>
         );
     }
