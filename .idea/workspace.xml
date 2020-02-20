@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64429cc3-78c9-41ba-9565-501129593585" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/web/web.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/web/web.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/web/web.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/web/web.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/web/frontend/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/frontend/Form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/web/frontend/Request.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/frontend/Request.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/web/web.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/web.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +93,7 @@
       <workItem from="1580712329943" duration="4636000" />
       <workItem from="1580976774679" duration="8647000" />
       <workItem from="1581321272153" duration="1075000" />
-      <workItem from="1582183793685" duration="7943000" />
+      <workItem from="1582183793685" duration="9257000" />
     </task>
     <servers />
   </component>

@@ -274,6 +274,18 @@ export class Form extends Component {
             })
             .catch(error => console.log(error));
     };
+
+    private checkAvailable(): boolean {
+        const emptyStrings = (this.state.name === null || this.state.name.trim() === '')
+                          || (this.state.surname === null || this.state.surname.trim() === '')
+                          || (!this.state.house);
+        const emptySelects = (!this.state.selectedDistrict || !this.state.selectedCity || !this.state.selectedStreet);
+        const emptyChecks = (this.state.answerByPostmail && emptySelects && this.state.house)
+                         || (this.state.answerByEmail && (this.state.email === null || this.state.email.trim() === ''));
+
+        return emptyStrings || emptySelects || emptyChecks || !this.state.agreedWithPDN;
+    };
+
     render() {
         return (
             <div style={this.style.card}>
@@ -384,7 +396,10 @@ export class Form extends Component {
                             </span>
                         </div>
 
-                        <Button component={Link} to="/request" style={{marginTop: '15px'}}>
+                        <Button component={Link}
+                                to="/request"
+                                style={{marginTop: '15px'}}
+                                disabled={this.checkAvailable()}>
                             Перейти к обращению <NavigateNextIcon style={{marginBottom: '2px'}}/>
                         </Button>
                     </CardContent>
