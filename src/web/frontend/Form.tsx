@@ -277,13 +277,12 @@ export class Form extends Component {
 
     private checkAvailable(): boolean {
         const emptyStrings = (this.state.name === null || this.state.name.trim() === '')
-                          || (this.state.surname === null || this.state.surname.trim() === '')
-                          || (!this.state.house);
+                          || (this.state.surname === null || this.state.surname.trim() === '');
         const emptySelects = (!this.state.selectedDistrict || !this.state.selectedCity || !this.state.selectedStreet);
         const emptyChecks = (this.state.answerByPostmail && emptySelects && this.state.house)
                          || (this.state.answerByEmail && (this.state.email === null || this.state.email.trim() === ''));
 
-        return emptyStrings || emptySelects || emptyChecks || !this.state.agreedWithPDN;
+        return emptyStrings || emptyChecks || !this.state.agreedWithPDN;
     };
 
     render() {
